@@ -1,4 +1,4 @@
-angular.module('sociogram.controllers', [])
+angular.module('stumblefeed.controllers', [])
 
     .controller('AppCtrl', function ($scope, $state, OpenFB) {
 
@@ -34,53 +34,22 @@ angular.module('sociogram.controllers', [])
 
     })
 
-    .controller('ShareCtrl', function ($scope, OpenFB) {
+    .controller('ShareCtrl', ['$scope', 'USER', '$state', function ($scope, 'USER', '$state') {
 
         $scope.item = {};
 
-        $scope.share = function () {
-            OpenFB.post('/me/feed', $scope.item)
-                .success(function () {
-                    $scope.status = "This item has been shared on OpenFB";
-                })
-                .error(function(data) {
-                    alert(data.error.message);
-                });
-        };
+        $scope.user={};
+        $scope.next=function(){
+            USER.name=$scope.user.name;
+            $state.go('chat');
+        }
 
-    })
+    }])
 
-    .controller('ProfileCtrl', function ($scope, OpenFB) {
-        OpenFB.get('/me').success(function (user) {
-            $scope.user = user;
-        });
-    })
+    .controller('ChatController',['$scope','$rootScope',function($scope,$rootScope){
 
-    .controller('PersonCtrl', function ($scope, $stateParams, OpenFB) {
-        OpenFB.get('/' + $stateParams.personId).success(function (user) {
-            $scope.user = user;
-        });
-    })
 
-    .controller('FriendsCtrl', function ($scope, $stateParams, OpenFB) {
-        OpenFB.get('/' + $stateParams.personId + '/friends', {limit: 50})
-            .success(function (result) {
-                $scope.friends = result.data;
-            })
-            .error(function(data) {
-                alert(data.error.message);
-            });
-    })
-
-    .controller('MutualFriendsCtrl', function ($scope, $stateParams, OpenFB) {
-        OpenFB.get('/' + $stateParams.personId + '/mutualfriends', {limit: 50})
-            .success(function (result) {
-                $scope.friends = result.data;
-            })
-            .error(function(data) {
-                alert(data.error.message);
-            });
-    })
+    }])
 
     .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, $ionicLoading) {
 

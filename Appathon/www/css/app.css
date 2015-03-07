@@ -11,3 +11,9 @@
     margin-top: 0;
     margin-bottom: 4px;
 }
+
+.bar.bar-positive {
+    border-color: #fc0841;
+    background-color: #fc0841;
+    background-image: none;
+}

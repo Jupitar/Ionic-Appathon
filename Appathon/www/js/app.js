@@ -1,6 +1,20 @@
-angular.module('sociogram', ['ionic', 'openfb', 'sociogram.controllers'])
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-    .run(function ($rootScope, $state, $ionicPlatform, $window, OpenFB) {
+io.on('connection', function(socket){
+    socket.on('event:new:image',function(data){
+        socket.broadcast.emit('event:incoming:image',data);
+    });
+});
+
+server.listen(8000,function(){
+    console.log('Socket.io Running');
+});
+
+angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services', 'stumblefeed.directives'])
+
+.run(function ($rootScope, $state, $ionicPlatform, $window, OpenFB) {
 
         OpenFB.init('1615618795335027');
 
@@ -53,16 +67,6 @@ angular.module('sociogram', ['ionic', 'openfb', 'sociogram.controllers'])
                 }
             })
 
-            .state('app.profile', {
-                url: "/profile",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/profile.html",
-                        controller: "ProfileCtrl"
-                    }
-                }
-            })
-
             .state('app.share', {
                 url: "/share",
                 views: {
@@ -73,33 +77,12 @@ angular.module('sociogram', ['ionic', 'openfb', 'sociogram.controllers'])
                 }
             })
 
-            .state('app.friends', {
-                url: "/person/:personId/friends",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/friend-list.html",
-                        controller: "FriendsCtrl"
-                    }
-                }
+            .state('chat',{
+                url:'/chat',
+                controller:'ChatCtrl',
+                templateUrl:'templates/chat.html'
             })
-            .state('app.mutualfriends', {
-                url: "/person/:personId/mutualfriends",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/mutual-friend-list.html",
-                        controller: "MutualFriendsCtrl"
-                    }
-                }
-            })
-            .state('app.person', {
-                url: "/person/:personId",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/person.html",
-                        controller: "PersonCtrl"
-                    }
-                }
-            })
+
             .state('app.feed', {
                 url: "/person/:personId/feed",
                 views: {
