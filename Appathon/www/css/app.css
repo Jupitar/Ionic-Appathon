@@ -1,7 +1,10 @@
 /* Your app's CSS, go crazy, make it your own */
 
-* , h1,h2,h3,h4,h5,h6,p,a,li,div{
+* , h1,h2,h3,h4,h5,h6,p,a,li,div {
     font-family: 'Roboto', sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
 }
 
 .ionic-logo {
@@ -20,6 +23,7 @@
     border-color: #fc0841;
     background-color: #fc0841;
     background-image: none;
+    box-shadow:0 1px 2px #aaa;
 }
 
 .main-background {
@@ -35,7 +39,6 @@
   margin:0 1rem 1rem;
   border-radius:3px;
   user-select:none;
-  animation:fly-in-from-left .5s 1s ease both;
   transform-origin:top left;
 }
 
