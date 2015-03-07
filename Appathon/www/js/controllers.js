@@ -46,8 +46,8 @@ angular.module('stumblefeed.controllers', [])
 
             $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
-              console.log(imageURI);
-              //$scope.lastPhoto = imageURI;
+              //console.log(imageURI);
+              $state.go('app.caption');
             }, function(err) {
               console.err(err);
             }, {
