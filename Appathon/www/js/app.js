@@ -1,4 +1,4 @@
-angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services', 'stumblefeed.directives'])
+angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services'])
 
 .config(function($compileProvider){
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
@@ -58,6 +58,14 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
             })
 
             .state('app.feed', {
+                url: "/person/:personId/feed",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/feed.html",
+                        controller: "FeedCtrl"
+                    }
+                }
+            }).state('app.caption', {
                 url: "/person/:personId/feed",
                 views: {
                     'menuContent': {
