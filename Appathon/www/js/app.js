@@ -1,18 +1,8 @@
-var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-
-io.on('connection', function(socket){
-    socket.on('event:new:image',function(data){
-        socket.broadcast.emit('event:incoming:image',data);
-    });
-});
-
-server.listen(8000,function(){
-    console.log('Socket.io Running');
-});
-
 angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services', 'stumblefeed.directives'])
+
+.config(function($compileProvider){
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+})
 
 .run(function ($rootScope, $state, $ionicPlatform, $window, OpenFB) {
 
@@ -75,12 +65,6 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
                         controller: "ShareCtrl"
                     }
                 }
-            })
-
-            .state('chat',{
-                url:'/chat',
-                controller:'ChatCtrl',
-                templateUrl:'templates/chat.html'
             })
 
             .state('app.feed', {
