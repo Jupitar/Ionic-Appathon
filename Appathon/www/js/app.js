@@ -57,16 +57,6 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
                 }
             })
 
-            .state('app.share', {
-                url: "/share",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/share.html",
-                        controller: "ShareCtrl"
-                    }
-                }
-            })
-
             .state('app.feed', {
                 url: "/person/:personId/feed",
                 views: {
