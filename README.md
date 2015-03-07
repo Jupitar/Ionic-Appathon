@@ -1,4 +1,4 @@
-# Ionic Appathon
+# StumbleFeed - Ionic App
 Web App in iOS wrapper
 
 ## Assumes you have node installed
