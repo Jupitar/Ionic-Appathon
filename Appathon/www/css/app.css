@@ -22,6 +22,10 @@
     background-image: none;
 }
 
+.main-background {
+    background:#d5d5d5;
+}
+
 .card {
   position:relative;
   z-index:2;
