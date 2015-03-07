@@ -1,14 +1,14 @@
-<ion-view title="Feed" hide-back-button="true">
+<ion-view title="StumbleFeed" hide-back-button="true">
 
     <ion-nav-buttons side="left" style="background-color:#fc0841;">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right" style="background-color:#fc0841;">
-        <button menu-toggle="right" class="button button-icon icon ion-camera"></button>
+        <button class="button button-icon icon ion-camera" ng-click="upload()"></button>
     </ion-nav-buttons>
 
-    <ion-content has-header="true" padding="true">
+    <ion-content has-header="true" padding="true" class="main-background">
 
         <ion-refresher
                 pulling-text="Pull to refresh..."
@@ -16,10 +16,8 @@
         </ion-refresher>
 
         <div ng-repeat="item in items" class="list card">
-            <div class="item item-body">
                 <img ng-if="item.picture" ng-src="{{ item.picture }}"/>
                 <p>{{item.message}}</p>
-            </div>
         </div>
 
     </ion-content>

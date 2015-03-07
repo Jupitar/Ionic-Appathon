@@ -21,7 +21,7 @@ angular.module('stumblefeed.directives',[]).directive('browseFile',['$rootScope'
 
                fileReader.onload=function(event){
                    $rootScope.$broadcast('event:file:selected',{image:event.target.result,sender:USER.name})
-               }i
+               };
 
                fileReader.readAsDataURL(file);
             });

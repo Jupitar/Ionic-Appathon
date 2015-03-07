@@ -1,5 +1,9 @@
 angular.module('stumblefeed.controllers', [])
 
+    .config(function($compileProvider){
+      $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+    })
+
     .controller('AppCtrl', function ($scope, $state, OpenFB) {
 
         $scope.logout = function () {
@@ -34,24 +38,27 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('ShareCtrl', ['$scope', 'USER', '$state', function ($scope, 'USER', '$state') {
+    .controller('ShareCtrl', function ($scope, Camera) {
 
         $scope.item = {};
 
-        $scope.user={};
-        $scope.next=function(){
-            USER.name=$scope.user.name;
-            $state.go('chat');
-        }
+          $scope.getPhoto = function() {
+            Camera.getPicture().then(function(imageURI) {
+              console.log(imageURI);
+              //$scope.lastPhoto = imageURI;
+            }, function(err) {
+              console.err(err);
+            }, {
+              quality: 75,
+              targetWidth: 320,
+              targetHeight: 320,
+              saveToPhotoAlbum: true
+            });
+          };
 
-    }])
+    })
 
-    .controller('ChatController',['$scope','$rootScope',function($scope,$rootScope){
-
-
-    }])
-
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, $ionicLoading) {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, $ionicLoading, $state) {
 
         $scope.show = function() {
             $scope.loading = $ionicLoading.show({
@@ -61,6 +68,10 @@ angular.module('stumblefeed.controllers', [])
         $scope.hide = function(){
             $scope.loading.hide();
         };
+
+        $scope.upload = function() {
+            $state.go('app.share');
+          }
 
         function loadFeed() {
             $scope.show();
