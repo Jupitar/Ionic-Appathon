@@ -42,7 +42,7 @@ angular.module('stumblefeed.controllers', [])
 
         $scope.item = {};
 
-          $scope.getPhoto = function() {
+          $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
               console.log(imageURI);
               //$scope.lastPhoto = imageURI;
