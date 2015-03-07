@@ -38,11 +38,13 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('ShareCtrl', function ($scope, Camera) {
+    .controller('ShareCtrl', function ($scope) {
 
-        $scope.item = {};
+    })
 
-          $scope.getPicture = function() {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, $ionicLoading, $state, Camera) {
+
+            $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
               console.log(imageURI);
               //$scope.lastPhoto = imageURI;
@@ -55,10 +57,6 @@ angular.module('stumblefeed.controllers', [])
               saveToPhotoAlbum: true
             });
           };
-
-    })
-
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, $ionicLoading, $state) {
 
         $scope.show = function() {
             $scope.loading = $ionicLoading.show({
