@@ -7,6 +7,10 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
 }
 
+p {
+  margin: 15px 0 0;
+}
+
 img {
   width: 100%;
 }
@@ -49,7 +53,7 @@ img {
 .card:after {
   position:absolute;
   font-size:.7rem;
-  bottom:1.5rem;
+  bottom:1.6rem;
   right: 1.5rem;
   content:"i";
   border:thin solid gray;
