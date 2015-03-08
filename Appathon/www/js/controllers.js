@@ -71,7 +71,7 @@ angular.module('stumblefeed.controllers', [])
             }, {
               quality: 100,
               allowEdit: true,
-              //destinationType : Camera.DestinationType.DATA_URL
+              destinationType : Camera.DestinationType.DATA_URL
             });
           };
 
