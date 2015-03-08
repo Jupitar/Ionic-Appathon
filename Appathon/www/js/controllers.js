@@ -58,6 +58,7 @@ angular.module('stumblefeed.controllers', [])
             Cam.getPicture().then(function(imageURI) {
                 // IMAGEURI = imageURI;
                 // $state.go('app.caption');
+                $scope.formData = {};
                 $scope.formData.image = imageURI;
                 $scope.formData.text = "test";
                 Post.post($scope.formData)
@@ -66,11 +67,11 @@ angular.module('stumblefeed.controllers', [])
                         $scope.items = data.slice().reverse();
                     });
             }, function(err) {
-              console.err(err);
+              console.error(err);
             }, {
               quality: 100,
               allowEdit: true,
-              destinationType : Camera.DestinationType.DATA_URL
+              //destinationType : Camera.DestinationType.DATA_URL
             });
           };
 
