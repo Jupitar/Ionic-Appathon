@@ -2,7 +2,7 @@ angular.module('stumblefeed.services',[])
 .value('USER',{})
 .value('IMAGEURI',{})
 
-.factory('Camera', ['$q', function($q) {
+.factory('Cam', ['$q', function($q) {
 
   return {
     getPicture: function(options) {
@@ -17,7 +17,7 @@ angular.module('stumblefeed.services',[])
 
       return q.promise;
     }
-  }
+  };
 }])
 .factory('Post', function($http) {
     return {
@@ -27,5 +27,5 @@ angular.module('stumblefeed.services',[])
         post : function(postData) {
             return $http.post('http://fierysolid.com:8080/upload', postData);
         }
-    }
+    };
 });
