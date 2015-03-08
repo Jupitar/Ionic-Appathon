@@ -16,7 +16,7 @@
         </ion-refresher>
 
         <div ng-repeat="item in items" class="list card">
-                <img ng-src="{{ item.image }}"/>
+                <img ng-src="data:image/jpeg;base64,{{ item.image }}"/>
                 <p>{{item.text}}</p>
         </div>
 
