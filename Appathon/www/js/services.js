@@ -11,7 +11,7 @@ angular.module('stumblefeed.services',[])
                 data = value;
             }
         };
-    });
+    })
 
 .factory('Cam', ['$q', function($q) {
 

@@ -48,16 +48,15 @@ angular.module('stumblefeed.controllers', [])
                 Post.post($scope.postData)
                     .success(function(data) {
                         $location.path('/app/person/me/feed');
-                        console.log(data);
                     });
           };
 
           $scope.cancel = function() {
-                $state.go('app.feed');
+                $location.path('/app/person/me/feed');
           };
     })
 
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, Post) {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI) {
 
             $scope.getPicture = function() {
                 Cam.getPicture().then(function(imageURI) {
