@@ -14,7 +14,7 @@ angular.module('stumblefeed.services',[])
       }, function(err) {
         q.reject(err);
       }, {
-              quality: 100,
+              quality: 60,
               destinationType: Camera.DestinationType.DATA_URL,
               sourceType: Camera.PictureSourceType.CAMERA,
               allowEdit: true,
