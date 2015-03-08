@@ -45,7 +45,7 @@ angular.module('stumblefeed.controllers', [])
                 $scope.formData.image = IMAGEURI;
                 Post.post($scope.formData)
                     .success(function(data) {
-                        $scope.formData = {};
+                        $scope.postData = {};
                         $scope.daily = data;
                     });
             }
@@ -54,21 +54,17 @@ angular.module('stumblefeed.controllers', [])
 
     .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, Post) {
 
-            $scope.formData = {};
+            $scope.postData = {};
 
             $scope.getPicture = function() {
                 $scope.show();
                 Cam.getPicture().then(function(imageURI) {
-                IMAGEURI = imageURI;
-                console.log(IMAGEURI);
-                // $state.go('app.caption');
-
-                $scope.formData.image = "data:image/jpeg;base64," + imageURI;
-                $scope.formData.text = "test";
-                Post.post($scope.formData)
+                $scope.postData.image = "data:image/jpeg;base64," + imageURI;
+                $scope.postData.date = Date.now();
+                Post.post($scope.postData)
                     .success(function(data) {
                         $scope.hide();
-                        $scope.formData = {};
+                        $scope.postData = {};
                         $scope.items = data.slice().reverse();
                     });
             }, function(err) {

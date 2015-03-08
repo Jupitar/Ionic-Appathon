@@ -17,7 +17,7 @@
 
         <div ng-repeat="item in items" class="list card">
                 <img ng-src="{{ item.image }}"/>
-                <p>{{item.text}}</p>
+                <p class="card-text">{{item.date | date:'dd MMM yyyy - hh:mm:ss a'}}</p>
         </div>
 
     </ion-content>
