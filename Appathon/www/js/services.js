@@ -1,6 +1,6 @@
 angular.module('stumblefeed.services',[])
 .value('USER',{})
-.value('IMAGEURI',{})
+.value('IMAGEURI',"")
 
 .factory('Cam', ['$q', function($q) {
 

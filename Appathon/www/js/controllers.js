@@ -57,19 +57,23 @@ angular.module('stumblefeed.controllers', [])
             $scope.formData = {};
 
             $scope.getPicture = function() {
-            Cam.getPicture().then(function(imageURI) {
-                // IMAGEURI = imageURI;
+                $scope.show();
+                Cam.getPicture().then(function(imageURI) {
+                IMAGEURI = imageURI;
+                console.log(IMAGEURI);
                 // $state.go('app.caption');
 
-                $scope.formData.image = imageURI;
+                $scope.formData.image = "data:image/jpeg;base64," + imageURI;
                 $scope.formData.text = "test";
                 Post.post($scope.formData)
                     .success(function(data) {
+                        $scope.hide();
                         $scope.formData = {};
                         $scope.items = data.slice().reverse();
                     });
             }, function(err) {
-              console.error(err);
+                $scope.hide();
+                console.error(err);
             });
           };
 
@@ -91,7 +95,7 @@ angular.module('stumblefeed.controllers', [])
                 $scope.$broadcast('scroll.refreshComplete');
             }).error(function(data) {
                 $scope.hide();
-                alert(data.error.message);
+                console.error(err);
             });
         }
 
