@@ -22,7 +22,8 @@ angular.module('stumblefeed.services',[])
               targetWidth: 500,
               targetHeight: 500,
               popoverOptions: CameraPopoverOptions,
-              saveToPhotoAlbum: false
+              saveToPhotoAlbum: false,
+              correctOrientation: true
             });
 
       return q.promise;
