@@ -17,7 +17,7 @@ module.exports = function(app) {
     app.post('/upload', function(req, res, next) {
         var post  =  new Posts({
             text : req.body.text,
-            imageURI: req.body.image,
+            image: req.body.image,
             done : false
         });
 
