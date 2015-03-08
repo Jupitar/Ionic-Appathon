@@ -30,7 +30,6 @@ module.exports = function(app) {
     });
 
     app.get('/upload', function(req, res, next) {
-        console.log(Posts);
         Posts.find({}, function(err, posts) {
             res.json(posts);
         });

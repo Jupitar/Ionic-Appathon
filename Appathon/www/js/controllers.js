@@ -57,7 +57,7 @@ angular.module('stumblefeed.controllers', [])
             $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
                 IMAGEURI = imageURI;
-              $state.go('app.caption');
+              $location.path('/caption');
             }, function(err) {
               console.err(err);
             }, {
@@ -77,16 +77,13 @@ angular.module('stumblefeed.controllers', [])
             $scope.loading.hide();
         };
 
-        $scope.upload = function() {
-            $state.go('app.share');
-          }
-
         function loadFeed() {
         $scope.show();
           Post.get()
             .success(function(data) {
                 $scope.hide();
                 $scope.items = data;
+                $scope.$broadcast('scroll.refreshComplete');
             }).error(function(data) {
                 $scope.hide();
                 alert(data.error.message);
