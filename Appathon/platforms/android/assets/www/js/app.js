@@ -6,7 +6,7 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
 
 .run(function ($rootScope, $state, $ionicPlatform, $window, OpenFB) {
 
-        OpenFB.init('1615618795335027');
+        OpenFB.init('1615618795335027','http://fierysolid.com/stumble/oauthcallback.html');
 
         $ionicPlatform.ready(function () {
             if (window.StatusBar) {
