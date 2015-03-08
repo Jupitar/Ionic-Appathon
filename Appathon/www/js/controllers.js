@@ -38,15 +38,14 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('ShareCtrl', function ($scope) {
+    .controller('CaptionCtrl', function ($scope) {
 
     })
 
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, $ionicLoading, $state, Camera) {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post,$ionicLoading, $state, Camera) {
 
             $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
-              //console.log(imageURI);
               $state.go('app.caption');
             }, function(err) {
               console.err(err);
@@ -72,19 +71,31 @@ angular.module('stumblefeed.controllers', [])
           }
 
         function loadFeed() {
-            $scope.show();
-            OpenFB.get('/' + $stateParams.personId + '/home', {limit: 30})
-                .success(function (result) {
-                    $scope.hide();
-                    $scope.items = result.data;
-                    // Used with pull-to-refresh
-                    $scope.$broadcast('scroll.refreshComplete');
-                })
-                .error(function(data) {
-                    $scope.hide();
-                    alert(data.error.message);
-                });
+        $scope.show();
+          Post.get()
+            .success(function(data) {
+                $scope.show();
+                $scope.items = data;
+            }).error(function(data) {
+                $scope.hide();
+                alert(data.error.message);
+            });
         }
+
+        // function loadFeed() {
+        //     $scope.show();
+        //     OpenFB.get('/' + $stateParams.personId + '/home', {limit: 30})
+        //         .success(function (result) {
+        //             $scope.hide();
+        //             $scope.items = result.data;
+        //             // Used with pull-to-refresh
+        //             $scope.$broadcast('scroll.refreshComplete');
+        //         })
+        //         .error(function(data) {
+        //             $scope.hide();
+        //             alert(data.error.message);
+        //         });
+        // }
 
         $scope.doRefresh = loadFeed;
 
