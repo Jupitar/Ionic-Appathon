@@ -1,7 +1,7 @@
-angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services', 'stumblefeed.directives'])
+angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services'])
 
 .config(function($compileProvider){
-  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|data|local):/);
 })
 
 .run(function ($rootScope, $state, $ionicPlatform, $window, OpenFB) {
@@ -57,14 +57,10 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
                 }
             })
 
-            .state('app.share', {
-                url: "/share",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/share.html",
-                        controller: "ShareCtrl"
-                    }
-                }
+            .state('app.caption',{
+                url:'/caption',
+                controller:'CaptionCtrl',
+                templateUrl:'templates/caption.html'
             })
 
             .state('app.feed', {

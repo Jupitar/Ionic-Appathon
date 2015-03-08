@@ -1,7 +1,7 @@
 angular.module('stumblefeed.controllers', [])
 
     .config(function($compileProvider){
-      $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+      $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|data|local):/);
     })
 
     .controller('AppCtrl', function ($scope, $state, OpenFB) {
@@ -38,14 +38,26 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('ShareCtrl', function ($scope, Camera) {
+    .controller('CaptionCtrl', function ($scope, IMAGEURI, Post) {
+        $scope.createPost = function() {
 
-        $scope.item = {};
+            if (!$.isEmptyObject($scope.formData)) {
+                $scope.formData.image = IMAGEURI;
+                Post.post($scope.formData)
+                    .success(function(data) {
+                        $scope.formData = {};
+                        $scope.daily = data;
+                    });
+            }
+        };
+    })
 
-          $scope.getPicture = function() {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post,$ionicLoading, $state, Camera, IMAGEURI) {
+
+            $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
-              console.log(imageURI);
-              //$scope.lastPhoto = imageURI;
+                IMAGEURI = imageURI;
+              $state.go('app.caption');
             }, function(err) {
               console.err(err);
             }, {
@@ -55,10 +67,6 @@ angular.module('stumblefeed.controllers', [])
               saveToPhotoAlbum: true
             });
           };
-
-    })
-
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, $ionicLoading, $state) {
 
         $scope.show = function() {
             $scope.loading = $ionicLoading.show({
@@ -74,18 +82,15 @@ angular.module('stumblefeed.controllers', [])
           }
 
         function loadFeed() {
-            $scope.show();
-            OpenFB.get('/' + $stateParams.personId + '/home', {limit: 30})
-                .success(function (result) {
-                    $scope.hide();
-                    $scope.items = result.data;
-                    // Used with pull-to-refresh
-                    $scope.$broadcast('scroll.refreshComplete');
-                })
-                .error(function(data) {
-                    $scope.hide();
-                    alert(data.error.message);
-                });
+        $scope.show();
+          Post.get()
+            .success(function(data) {
+                $scope.hide();
+                $scope.items = data;
+            }).error(function(data) {
+                $scope.hide();
+                alert(data.error.message);
+            });
         }
 
         $scope.doRefresh = loadFeed;

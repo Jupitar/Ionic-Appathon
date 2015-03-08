@@ -44,13 +44,14 @@ h1,h2,h3,h4,h5,h6 {
 
 .card:after {
   position:absolute;
-  font-size:.9rem;
+  font-size:.7rem;
   top:1.5rem;
   right:1rem;
   content:"i";
   border:thin solid gray;
   color:gray;
   width:1rem;
+  height:1rem;
   line-height:1rem;
   text-align:center;
   border-radius:50%;

@@ -1,6 +1,6 @@
 angular.module('stumblefeed.services',[])
 .value('USER',{})
-.value('SOCKET_URL','localhost:8000')
+.value('IMAGEURI',{})
 
 .factory('Camera', ['$q', function($q) {
 
@@ -18,4 +18,14 @@ angular.module('stumblefeed.services',[])
       return q.promise;
     }
   }
-}]);
+}])
+.factory('Post', function($http) {
+    return {
+        get : function() {
+            return $http.get('http://fierysolid.com:8080/upload');
+        },
+        post : function(postData) {
+            return $http.post('http://fierysolid.com:8080/upload', postData);
+        }
+    }
+})
