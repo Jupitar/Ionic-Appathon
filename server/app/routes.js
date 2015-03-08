@@ -9,7 +9,13 @@ var Posts = mongoose.model('Posts', postSchema)
 // expose the routes to our app with module.exports
 module.exports = function(app) {
 
-    app.post('/upload', function(req, res) {
+    app.use(function(req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+    });
+
+    app.post('/upload', function(req, res, next) {
         var post  =  new Posts({
             text : req.body.text,
             imageURI: req.body.image,
@@ -24,7 +30,7 @@ module.exports = function(app) {
         res.json(post);
     });
 
-    app.get('/upload', function(req, res) {
+    app.get('/upload', function(req, res, next) {
         console.log(Posts);
         Posts.find({}, function(err, posts) {
             res.json(posts);
