@@ -27,14 +27,14 @@ module.exports = function(app) {
         });
 
         var q = Posts.find().limit(20);
-        q.exexFind(function(err, posts) {
+        q.execFind(function(err, posts) {
             res.json(posts);
         });
     });
 
     app.get('/upload', function(req, res, next) {
         var q = Posts.find().limit(20);
-        q.exexFind(function(err, posts) {
+        q.execFind(function(err, posts) {
             res.json(posts);
         });
     });
