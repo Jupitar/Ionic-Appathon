@@ -5,7 +5,7 @@ angular.module('stumblefeed.services',[])
 .factory('Cam', ['$q', function($q) {
 
   return {
-    getPicture: function(options) {
+    getPicture: function() {
       var q = $q.defer();
 
       navigator.camera.getPicture(function(result) {
@@ -13,7 +13,17 @@ angular.module('stumblefeed.services',[])
         q.resolve(result);
       }, function(err) {
         q.reject(err);
-      });
+      }, {
+              quality: 50,
+              destinationType: Camera.DestinationType.DATA_URL,
+              sourceType: Camera.PictureSourceType.CAMERA,
+              allowEdit: true,
+              encodingType: Camera.EncodingType.JPEG,
+              targetWidth: 500,
+              targetHeight: 500,
+              popoverOptions: CameraPopoverOptions,
+              saveToPhotoAlbum: false
+            });
 
       return q.promise;
     }

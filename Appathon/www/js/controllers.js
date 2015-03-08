@@ -52,23 +52,12 @@ angular.module('stumblefeed.controllers', [])
         };
     })
 
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post,$ionicLoading, $state, Cam, IMAGEURI, Post) {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, Post) {
 
             $scope.formData = {};
-            var options = {
-              quality: 50,
-              destinationType: Camera.DestinationType.DATA_URL,
-              sourceType: Camera.PictureSourceType.CAMERA,
-              allowEdit: true,
-              encodingType: Camera.EncodingType.JPEG,
-              targetWidth: 500,
-              targetHeight: 500,
-              popoverOptions: CameraPopoverOptions,
-              saveToPhotoAlbum: false
-            };
 
             $scope.getPicture = function() {
-            Cam.getPicture(options).then(function(imageURI) {
+            Cam.getPicture().then(function(imageURI) {
                 // IMAGEURI = imageURI;
                 // $state.go('app.caption');
 
@@ -77,8 +66,7 @@ angular.module('stumblefeed.controllers', [])
                 Post.post($scope.formData)
                     .success(function(data) {
                         $scope.formData = {};
-                        $scope.items = data;
-                        $scope.items = $scope.items.slice().reverse();
+                        $scope.items = data.slice().reverse();
                     });
             }, function(err) {
               console.error(err);
@@ -99,8 +87,7 @@ angular.module('stumblefeed.controllers', [])
           Post.get()
             .success(function(data) {
                 $scope.hide();
-                $scope.items = data;
-                $scope.items = $scope.items.slice().reverse();
+                $scope.items = data.slice().reverse();
                 $scope.$broadcast('scroll.refreshComplete');
             }).error(function(data) {
                 $scope.hide();

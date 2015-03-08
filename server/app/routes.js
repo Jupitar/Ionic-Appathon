@@ -24,7 +24,9 @@ module.exports = function(app) {
           console.log("successfully posted");
         });
 
-        res.json(post);
+        Posts.find({}, function(err, posts) {
+            res.json(posts);
+        });
     });
 
     app.get('/upload', function(req, res, next) {
