@@ -1,6 +1,7 @@
 angular.module('stumblefeed.services',[])
 .value('USER',{})
 .value('IMAGEURI',"")
+.value('AFTERCAM', false)
 
 .factory('Cam', ['$q', function($q) {
 
@@ -33,10 +34,10 @@ angular.module('stumblefeed.services',[])
 .factory('Post', function($http) {
     return {
         get : function() {
-            return $http.get('http://fierysolid.com:8080/upload');
+            return $http.get('http://fierysolid.com:8082/upload');
         },
         post : function(postData) {
-            return $http.post('http://fierysolid.com:8080/upload', postData);
+            return $http.post('http://fierysolid.com:8082/upload', postData);
         }
     };
 });

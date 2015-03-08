@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var postSchema = mongoose.Schema({
         date : Number,
-        image: String
+        image: String,
+        caption: String
     });
 var Posts = mongoose.model('Posts', postSchema)
 
@@ -16,7 +17,8 @@ module.exports = function(app) {
     app.post('/upload', function(req, res, next) {
         var post  =  new Posts({
             date: req.body.date,
-            image: req.body.image
+            image: req.body.image,
+            caption: req.body.caption
         });
 
         post.save(function (err, post) {

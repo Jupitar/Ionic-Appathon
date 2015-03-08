@@ -38,35 +38,29 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('CaptionCtrl', function ($scope, IMAGEURI, Post) {
-        $scope.createPost = function() {
+    .controller('CaptionCtrl', function ($scope, $location, IMAGEURI, Post) {
+        $scope.postData = {};
 
-            if (!$.isEmptyObject($scope.formData)) {
-                $scope.formData.image = IMAGEURI;
-                Post.post($scope.formData)
+        $scope.createPost = function() {
+                $scope.postData.image = IMAGEURI;
+                $scope.postData.date = Date.now();
+                $scope.postData.caption = $scope.formData;
+                Post.post($scope.postData)
                     .success(function(data) {
-                        $scope.postData = {};
-                        $scope.daily = data;
+                        $location.path('/app/person/me/feed');
+                        console.log(data);
                     });
-            }
-        };
+          };
     })
 
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, Post) {
-
-            $scope.postData = {};
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, AFTERCAM, Post) {
 
             $scope.getPicture = function() {
                 $scope.show();
                 Cam.getPicture().then(function(imageURI) {
-                $scope.postData.image = "data:image/jpeg;base64," + imageURI;
-                $scope.postData.date = Date.now();
-                Post.post($scope.postData)
-                    .success(function(data) {
-                        $scope.hide();
-                        $scope.postData = {};
-                        $scope.items = data.slice().reverse();
-                    });
+                    IMAGEURI = "data:image/jpeg;base64," + imageURI;
+                    AFTERCAM = true;
+
             }, function(err) {
                 $scope.hide();
                 console.error(err);
@@ -83,16 +77,21 @@ angular.module('stumblefeed.controllers', [])
         };
 
         function loadFeed() {
-        $scope.show();
-          Post.get()
-            .success(function(data) {
-                $scope.hide();
-                $scope.items = data.slice().reverse();
-                $scope.$broadcast('scroll.refreshComplete');
-            }).error(function(data) {
-                $scope.hide();
-                console.error(err);
-            });
+            if(AFTERCAM){
+                AFTERCAM = false;
+                $state.go('app.caption');
+            }else {
+              $scope.show();
+              Post.get()
+                .success(function(data) {
+                    $scope.hide();
+                    $scope.items = data.slice().reverse();
+                    $scope.$broadcast('scroll.refreshComplete');
+                }).error(function(data) {
+                    $scope.hide();
+                    console.error(data);
+                });
+            }
         }
 
         $scope.doRefresh = loadFeed;
