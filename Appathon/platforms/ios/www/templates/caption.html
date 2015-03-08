@@ -1,0 +1,11 @@
+<ion-view title="Add Caption" hide-back-button="true">
+
+    <ion-nav-buttons side="left" style="background-color:#eb1227;">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" padding="true">
+            <input name="caption" type="text" ng-model="formData.text"/>
+            <button class="button button-block button-primary" ng-click="createPost()">Submit</button>
+    </ion-content>
+</ion-view>

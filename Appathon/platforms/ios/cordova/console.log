@@ -1,0 +1,86 @@
+2015-03-07 11:32:24.434 Sociogram[51529:12077201] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Data/Application/4B0E8D66-EB39-4C60-B64D-1F966EF9C31C/Library/Cookies/Cookies.binarycookies
+2015-03-07 11:32:24.560 Sociogram[51529:12077201] Apache Cordova native platform version 3.8.0 is starting.
+2015-03-07 11:32:24.561 Sociogram[51529:12077201] Multi-tasking -> Device: YES, App: YES
+2015-03-07 11:32:24.579 Sociogram[51529:12077201] Unlimited access to network resources
+2015-03-07 11:32:24.583 Sociogram[51529:12077201] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-07 11:32:25.494 Sociogram[51529:12077201] Resetting plugins due to page load.
+2015-03-07 11:32:25.645 Sociogram[51529:12077201] Finished load of: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Bundle/Application/AAC15EB5-DD9E-44FF-ADB9-D541006570B9/Sociogram.app/www/index.html#/app/person/me/feed
+2015-03-07 11:32:27.378 Sociogram[51529:12077201] Setting the WebView's frame to {{0, 0}, {375, 623}}
+2015-03-07 11:32:27.386 Sociogram[51529:12077201] THREAD WARNING: ['InAppBrowser'] took '227.960938' ms. Plugin should use a background thread.
+2015-03-07 12:08:58.294 Sociogram[53694:12114370] Apache Cordova native platform version 3.8.0 is starting.
+2015-03-07 12:08:58.295 Sociogram[53694:12114370] Multi-tasking -> Device: YES, App: YES
+2015-03-07 12:08:58.297 Sociogram[53694:12114370] Unlimited access to network resources
+2015-03-07 12:08:58.300 Sociogram[53694:12114370] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-07 12:08:58.664 Sociogram[53694:12114370] Resetting plugins due to page load.
+2015-03-07 12:08:58.824 Sociogram[53694:12114370] Finished load of: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Bundle/Application/9573BF48-1C4D-4F34-89B1-2530B4C36B63/Sociogram.app/www/index.html#/app/person/me/feed
+2015-03-07 12:09:02.625 Sociogram[53694:12114370] Setting the WebView's frame to {{0, 0}, {375, 623}}
+2015-03-07 12:09:02.631 Sociogram[53694:12114370] THREAD WARNING: ['InAppBrowser'] took '145.285889' ms. Plugin should use a background thread.
+2015-03-07 12:09:07.849 Sociogram[53694:12114488] Camera.getPicture: source type 1 not available.
+2015-03-07 12:09:09.574 Sociogram[53694:12114477] Camera.getPicture: source type 1 not available.
+2015-03-07 12:09:10.286 Sociogram[53694:12114477] Camera.getPicture: source type 1 not available.
+2015-03-07 12:09:12.970 Sociogram[53694:12114477] Terminating since there is no system app.
+2015-03-07 23:38:13.377 StumbleFeed[90725:12494781] Apache Cordova native platform version 3.8.0 is starting.
+2015-03-07 23:38:13.380 StumbleFeed[90725:12494781] Multi-tasking -> Device: YES, App: YES
+2015-03-07 23:38:13.403 StumbleFeed[90725:12494781] Unlimited access to network resources
+2015-03-07 23:38:13.414 StumbleFeed[90725:12494781] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-07 23:38:14.145 StumbleFeed[90725:12494781] Resetting plugins due to page load.
+2015-03-07 23:38:14.533 StumbleFeed[90725:12494781] Finished load of: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Bundle/Application/E397AB53-442D-4E7F-81C6-6E15242F53D4/StumbleFeed.app/www/index.html#/app/login
+2015-03-07 23:38:18.703 StumbleFeed[90725:12494781] Setting the WebView's frame to {{0, 0}, {375, 623}}
+2015-03-07 23:38:18.718 StumbleFeed[90725:12494781] THREAD WARNING: ['InAppBrowser'] took '203.188721' ms. Plugin should use a background thread.
+2015-03-07 23:38:30.607 StumbleFeed[90725:12495303] Camera.getPicture: source type 1 not available.
+2015-03-07 23:38:30.616 StumbleFeed[90725:12494781] ERROR: No camera available
+2015-03-07 23:38:31.183 StumbleFeed[90725:12495206] Camera.getPicture: source type 1 not available.
+2015-03-07 23:38:31.188 StumbleFeed[90725:12494781] ERROR: No camera available
+2015-03-07 23:38:31.932 StumbleFeed[90725:12495305] Camera.getPicture: source type 1 not available.
+2015-03-07 23:38:31.937 StumbleFeed[90725:12494781] ERROR: No camera available
+2015-03-07 23:46:24.518 StumbleFeed[91425:12503945] Apache Cordova native platform version 3.8.0 is starting.
+2015-03-07 23:46:24.519 StumbleFeed[91425:12503945] Multi-tasking -> Device: YES, App: YES
+2015-03-07 23:46:24.520 StumbleFeed[91425:12503945] Unlimited access to network resources
+2015-03-07 23:46:24.523 StumbleFeed[91425:12503945] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-07 23:46:24.819 StumbleFeed[91425:12503945] Resetting plugins due to page load.
+2015-03-07 23:46:25.056 StumbleFeed[91425:12503945] Finished load of: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Bundle/Application/0B9ECDC5-0978-4F0F-A3D9-99260F3404AE/StumbleFeed.app/www/index.html#/app/login
+2015-03-07 23:46:28.145 StumbleFeed[91425:12503945] Setting the WebView's frame to {{0, 0}, {375, 623}}
+2015-03-07 23:46:28.151 StumbleFeed[91425:12503945] THREAD WARNING: ['InAppBrowser'] took '180.878906' ms. Plugin should use a background thread.
+2015-03-07 23:53:40.676 StumbleFeed[92051:12509399] Apache Cordova native platform version 3.8.0 is starting.
+2015-03-07 23:53:40.676 StumbleFeed[92051:12509399] Multi-tasking -> Device: YES, App: YES
+2015-03-07 23:53:40.678 StumbleFeed[92051:12509399] Unlimited access to network resources
+2015-03-07 23:53:40.680 StumbleFeed[92051:12509399] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-07 23:53:40.983 StumbleFeed[92051:12509399] Resetting plugins due to page load.
+2015-03-07 23:53:41.208 StumbleFeed[92051:12509399] Finished load of: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Bundle/Application/9364EB59-5E3F-42B2-87E2-39F4BC414A0D/StumbleFeed.app/www/index.html#/app/login
+2015-03-07 23:54:00.598 StumbleFeed[92051:12509399] Setting the WebView's frame to {{0, 0}, {375, 623}}
+2015-03-07 23:54:00.603 StumbleFeed[92051:12509399] THREAD WARNING: ['InAppBrowser'] took '136.489990' ms. Plugin should use a background thread.

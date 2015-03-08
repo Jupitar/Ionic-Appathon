@@ -1,0 +1,67 @@
+/* Your app's CSS, go crazy, make it your own */
+
+* , h1,h2,h3,h4,h5,h6,p,a,li,div {
+    font-family: 'Roboto', sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+}
+
+p {
+  margin: 15px 0 0;
+}
+
+img {
+  width: 100%;
+}
+
+.ionic-logo {
+  display: block;
+  margin: 15px auto;
+  width: 96px;
+  height: 96px;
+}
+
+.item-body > p {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.bar.bar-positive {
+    border-color: #eb1227;
+    background-color: #eb1227;
+    background-image: none;
+    box-shadow:0 1px 2px #aaa;
+}
+
+.main-background {
+    background:#d5d5d5;
+}
+
+.card {
+  position:relative;
+  z-index:2;
+  padding:1.5rem;
+  box-shadow:0 1px 2px #aaa;
+  background:white;
+  margin:0 1rem 1rem;
+  border-radius:3px;
+  user-select:none;
+  transform-origin:top left;
+}
+
+.card:after {
+  position:absolute;
+  font-size:.7rem;
+  bottom:1.6rem;
+  right: 1.5rem;
+  content:"i";
+  border:thin solid gray;
+  color:gray;
+  width:1rem;
+  height:1rem;
+  line-height:1rem;
+  text-align:center;
+  border-radius:50%;
+  pointer-events:none;
+}

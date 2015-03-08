@@ -1,0 +1,26 @@
+<ion-view title="StumbleFeed" hide-back-button="true">
+
+    <ion-nav-buttons side="left" style="background-color:#eb1227;">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right" style="background-color:#eb1227;">
+        <button class="button button-icon icon ion-camera" ng-click="getPicture()"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" padding="true" class="main-background">
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div ng-repeat="item in items" class="list card">
+                <img ng-src="{{ item.image }}"/>
+                <p class="card-text">{{item.date | date:'dd MMM yyyy - hh:mm:ss a'}}</p>
+                <p class="caption">{{item.caption}}</p>
+        </div>
+
+    </ion-content>
+
+</ion-view>
