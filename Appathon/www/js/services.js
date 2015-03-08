@@ -18,4 +18,14 @@ angular.module('stumblefeed.services',[])
       return q.promise;
     }
   }
-}]);
+}])
+.factory('Post', function($http) {
+    return {
+        get : function() {
+            return $http.get('/upload');
+        },
+        post : function(todoData) {
+            return $http.post('/upload', postData);
+        }
+    }
+})
