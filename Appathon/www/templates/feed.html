@@ -15,7 +15,7 @@
                 on-refresh="doRefresh()">
         </ion-refresher>
 
-        <div ng-repeat="item in items" class="list card">
+        <div ng-repeat="item in items | reverse" class="list card">
                 <img ng-src="{{ item.imageURI }}"/>
                 <p>{{item.text}}</p>
         </div>
