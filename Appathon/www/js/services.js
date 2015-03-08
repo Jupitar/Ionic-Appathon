@@ -28,4 +28,4 @@ angular.module('stumblefeed.services',[])
             return $http.post('http://fierysolid.com:8080/upload', postData);
         }
     }
-})
+});

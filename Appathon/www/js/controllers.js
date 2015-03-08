@@ -61,10 +61,9 @@ angular.module('stumblefeed.controllers', [])
             }, function(err) {
               console.err(err);
             }, {
-              quality: 75,
-              targetWidth: 320,
-              targetHeight: 320,
-              saveToPhotoAlbum: true
+              quality: 100,
+              allowEdit,
+              destinationType : Camera.DestinationType.DATA_URL
             });
           };
 
