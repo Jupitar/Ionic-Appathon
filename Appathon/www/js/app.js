@@ -59,8 +59,12 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
 
             .state('app.caption',{
                 url:'/caption',
-                controller:'CaptionCtrl',
-                templateUrl:'templates/caption.html'
+                views: {
+                    'menuContent': {
+                        templateUrl:'templates/caption.html',
+                        controller:'CaptionCtrl'
+                    }
+                }
             })
 
             .state('app.feed', {

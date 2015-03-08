@@ -1,7 +1,17 @@
 angular.module('stumblefeed.services',[])
-.value('USER',{})
-.value('IMAGEURI',"")
-.value('AFTERCAM', false)
+
+.service('IMAGEURI', function () {
+        var data = '';
+
+        return {
+            getData: function () {
+                return data;
+            },
+            setData: function(value) {
+                data = value;
+            }
+        };
+    });
 
 .factory('Cam', ['$q', function($q) {
 

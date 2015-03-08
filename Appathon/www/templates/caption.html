@@ -1,11 +1,13 @@
 <ion-view title="Add Caption" hide-back-button="true">
 
-    <ion-nav-buttons side="left" style="background-color:#eb1227;">
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <ion-nav-buttons side="right" style="background-color:#eb1227;">
+        <button class="button button-icon icon ion-close" ng-click="cancel()"></button>
     </ion-nav-buttons>
 
     <ion-content has-header="true" padding="true">
-            <textarea name="caption" type="text" ng-model="formData"/>Caption...</textarea>
-            <button class="button button-block button-primary" ng-click="createPost()">Submit</button>
+            <label class="item item-input">
+                <textarea name="caption" type="text" ng-model="formData"/>Caption...</textarea>
+            </label>
+            <button class="button button-block button-primary" ng-click="createPost()">Post Stumble</button>
     </ion-content>
 </ion-view>

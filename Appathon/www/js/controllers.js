@@ -42,27 +42,29 @@ angular.module('stumblefeed.controllers', [])
         $scope.postData = {};
 
         $scope.createPost = function() {
-                $scope.postData.image = IMAGEURI;
+                $scope.postData.image = IMAGEURI.getData();
                 $scope.postData.date = Date.now();
-                $scope.postData.caption = $scope.formData;
+                $scope.postData.caption = this.formData;
                 Post.post($scope.postData)
                     .success(function(data) {
                         $location.path('/app/person/me/feed');
                         console.log(data);
                     });
           };
+
+          $scope.cancel = function() {
+                $state.go('app.feed');
+          };
     })
 
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, AFTERCAM, Post) {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, Post) {
 
             $scope.getPicture = function() {
-                $scope.show();
                 Cam.getPicture().then(function(imageURI) {
-                    IMAGEURI = "data:image/jpeg;base64," + imageURI;
-                    AFTERCAM = true;
 
+                    IMAGEURI.setData("data:image/jpeg;base64," + imageURI);
+                    $state.go('app.caption');
             }, function(err) {
-                $scope.hide();
                 console.error(err);
             });
           };
@@ -77,10 +79,6 @@ angular.module('stumblefeed.controllers', [])
         };
 
         function loadFeed() {
-            if(AFTERCAM){
-                AFTERCAM = false;
-                $state.go('app.caption');
-            }else {
               $scope.show();
               Post.get()
                 .success(function(data) {
@@ -91,7 +89,6 @@ angular.module('stumblefeed.controllers', [])
                     $scope.hide();
                     console.error(data);
                 });
-            }
         }
 
         $scope.doRefresh = loadFeed;
