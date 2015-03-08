@@ -73,9 +73,14 @@ angular.module('stumblefeed.controllers', [])
               console.error(err);
             }, {
               quality: 50,
-              correctOrientation: true,
-              //allowEdit: true,
-              destinationType : Camera.DestinationType.DATA_URL
+              destinationType: Camera.DestinationType.DATA_URL,
+              sourceType: Camera.PictureSourceType.CAMERA,
+              allowEdit: true,
+              encodingType: Camera.EncodingType.JPEG,
+              targetWidth: 500,
+              targetHeight: 500,
+              popoverOptions: CameraPopoverOptions,
+              saveToPhotoAlbum: false
             });
           };
 
