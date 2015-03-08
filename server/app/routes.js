@@ -26,13 +26,15 @@ module.exports = function(app) {
           console.log("successfully posted");
         });
 
-        Posts.find({}, function(err, posts) {
+        var q = Posts.find().limit(20);
+        q.exexFind(function(err, posts) {
             res.json(posts);
         });
     });
 
     app.get('/upload', function(req, res, next) {
-        Posts.find({}, function(err, posts) {
+        var q = Posts.find().limit(20);
+        q.exexFind(function(err, posts) {
             res.json(posts);
         });
     });
