@@ -4,7 +4,6 @@ var express = require("express"),
     util = require('util')
     fs   = require('fs-extra'),
     qt   = require('quickthumb');
-var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var flash    = require('connect-flash');
 

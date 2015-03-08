@@ -38,14 +38,15 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('CaptionCtrl', function ($scope) {
+    .controller('CaptionCtrl', function ($scope, IMAGEURI) {
 
     })
 
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post,$ionicLoading, $state, Camera) {
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post,$ionicLoading, $state, Camera, IMAGEURI) {
 
             $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
+                IMAGEURI = imageURI;
               $state.go('app.caption');
             }, function(err) {
               console.err(err);

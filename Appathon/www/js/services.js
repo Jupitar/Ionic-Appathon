@@ -1,6 +1,6 @@
 angular.module('stumblefeed.services',[])
 .value('USER',{})
-.value('SOCKET_URL','localhost:8000')
+.value('IMAGEURI',{})
 
 .factory('Camera', ['$q', function($q) {
 
