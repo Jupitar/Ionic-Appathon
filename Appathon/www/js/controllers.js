@@ -38,8 +38,23 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('CaptionCtrl', function ($scope, IMAGEURI) {
+    .controller('CaptionCtrl', function ($scope, IMAGEURI, Post) {
+        $scope.createPost = function() {
 
+            // validate the formData to make sure that something is there
+            // if form is empty, nothing will happen
+            // people can't just hold enter to keep adding the same to-do anymore
+            if (!$.isEmptyObject($scope.formData)) {
+                // call the create function from our service (returns a promise object)
+                $scope.formData.image = IMAGEURI;
+                Post.post($scope.formData)
+                    // if successful creation, call our get function to get all the new todos
+                    .success(function(data) {
+                        $scope.formData = {}; // clear the form so our user is ready to enter another
+                        $scope.daily = data; // assign our new list of todos
+                    });
+            }
+        };
     })
 
     .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post,$ionicLoading, $state, Camera, IMAGEURI) {
@@ -82,21 +97,6 @@ angular.module('stumblefeed.controllers', [])
                 alert(data.error.message);
             });
         }
-
-        // function loadFeed() {
-        //     $scope.show();
-        //     OpenFB.get('/' + $stateParams.personId + '/home', {limit: 30})
-        //         .success(function (result) {
-        //             $scope.hide();
-        //             $scope.items = result.data;
-        //             // Used with pull-to-refresh
-        //             $scope.$broadcast('scroll.refreshComplete');
-        //         })
-        //         .error(function(data) {
-        //             $scope.hide();
-        //             alert(data.error.message);
-        //         });
-        // }
 
         $scope.doRefresh = loadFeed;
 

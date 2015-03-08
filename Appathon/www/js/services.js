@@ -22,10 +22,10 @@ angular.module('stumblefeed.services',[])
 .factory('Post', function($http) {
     return {
         get : function() {
-            return $http.get('/upload');
+            return $http.get('http://fierysolid.com:8080/upload');
         },
-        post : function(todoData) {
-            return $http.post('/upload', postData);
+        post : function(postData) {
+            return $http.post('http://fierysolid.com:8080/upload', postData);
         }
     }
 })

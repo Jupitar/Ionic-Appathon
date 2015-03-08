@@ -2,11 +2,8 @@
     <ion-content has-header="true" padding="true">
         <form action="http://fieryslid.com:8080/upload" enctype="multipart/form-data" method="post">
             Add a caption:
-            <input name="caption" type="text" />
-            <br><br>
-            <input multiple="multiple" name="upload" type="file" />
-            <br><br>
-            <input type="submit" value="Upload" />
+            <input name="caption" type="text" ng-model="formData.text"/>
+            <button type="submit" class="btn btn-info btn-lg" ng-click="createPost()">Submit</button>
         </form>
     </ion-content>
 </ion-view>
