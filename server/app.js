@@ -25,4 +25,4 @@ app.use(session({ secret: 'america' }));
 app.use(flash());
 
 require('./app/routes.js')(app);
-app.listen(8080);
+app.listen(8082);
