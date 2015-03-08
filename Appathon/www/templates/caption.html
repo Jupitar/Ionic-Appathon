@@ -1,12 +1,6 @@
 <ion-view title="Add Caption" hide-back-button="true">
     <ion-content has-header="true" padding="true">
-        <form action="/upload" enctype="multipart/form-data" method="post">
-            Add a caption:
-            <input name="caption" type="text" />
-            <br><br>
-            <input multiple="multiple" name="upload" type="file" />
-            <br><br>
-            <input type="submit" value="Upload" />
-        </form>
+            <input name="caption" type="text" ng-model="formData.text"/>
+            <button class="button button-block button-primary" ng-click="createPost()">Submit</button>
     </ion-content>
 </ion-view>
