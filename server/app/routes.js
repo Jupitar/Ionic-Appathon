@@ -6,7 +6,6 @@ var postSchema = mongoose.Schema({
     });
 var Posts = mongoose.model('Posts', postSchema)
 
-// expose the routes to our app with module.exports
 module.exports = function(app) {
 
     app.use(function(req, res, next) {

@@ -1,7 +1,7 @@
 angular.module('stumblefeed.controllers', [])
 
     .config(function($compileProvider){
-      $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+      $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|data|local):/);
     })
 
     .controller('AppCtrl', function ($scope, $state, OpenFB) {
@@ -41,17 +41,12 @@ angular.module('stumblefeed.controllers', [])
     .controller('CaptionCtrl', function ($scope, IMAGEURI, Post) {
         $scope.createPost = function() {
 
-            // validate the formData to make sure that something is there
-            // if form is empty, nothing will happen
-            // people can't just hold enter to keep adding the same to-do anymore
             if (!$.isEmptyObject($scope.formData)) {
-                // call the create function from our service (returns a promise object)
                 $scope.formData.image = IMAGEURI;
                 Post.post($scope.formData)
-                    // if successful creation, call our get function to get all the new todos
                     .success(function(data) {
-                        $scope.formData = {}; // clear the form so our user is ready to enter another
-                        $scope.daily = data; // assign our new list of todos
+                        $scope.formData = {};
+                        $scope.daily = data;
                     });
             }
         };
@@ -90,7 +85,7 @@ angular.module('stumblefeed.controllers', [])
         $scope.show();
           Post.get()
             .success(function(data) {
-                $scope.show();
+                $scope.hide();
                 $scope.items = data;
             }).error(function(data) {
                 $scope.hide();

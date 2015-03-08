@@ -16,14 +16,13 @@ var configDB = require('./config/database.js');
 
 mongoose.connect(configDB.url);
 
-// Use quickthumb
 app.use(qt.static(__dirname + '/'));
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser()); // get information from html forms
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser());
 
-app.use(session({ secret: 'america' })); // session secret
-app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(session({ secret: 'america' }));
+app.use(flash());
 
 require('./app/routes.js')(app);
 app.listen(8080);
