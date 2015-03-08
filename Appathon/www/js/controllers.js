@@ -57,7 +57,7 @@ angular.module('stumblefeed.controllers', [])
             $scope.getPicture = function() {
             Camera.getPicture().then(function(imageURI) {
                 IMAGEURI = imageURI;
-              $location.path('/caption');
+                $state.go('app.caption');
             }, function(err) {
               console.err(err);
             }, {
@@ -83,6 +83,7 @@ angular.module('stumblefeed.controllers', [])
             .success(function(data) {
                 $scope.hide();
                 $scope.items = data;
+                $scope.items = $scope.items.slice().reverse();
                 $scope.$broadcast('scroll.refreshComplete');
             }).error(function(data) {
                 $scope.hide();

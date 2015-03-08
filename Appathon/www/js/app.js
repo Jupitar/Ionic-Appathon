@@ -1,4 +1,4 @@
-angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services', 'stumblefeed.filters'])
+angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'stumblefeed.services'])
 
 .config(function($compileProvider){
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|data|local):/);
