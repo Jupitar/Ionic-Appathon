@@ -84,3 +84,18 @@ To disable web storage backup to iCloud, set the BackupWebStorage preference to 
 2015-03-07 23:53:41.208 StumbleFeed[92051:12509399] Finished load of: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Bundle/Application/9364EB59-5E3F-42B2-87E2-39F4BC414A0D/StumbleFeed.app/www/index.html#/app/login
 2015-03-07 23:54:00.598 StumbleFeed[92051:12509399] Setting the WebView's frame to {{0, 0}, {375, 623}}
 2015-03-07 23:54:00.603 StumbleFeed[92051:12509399] THREAD WARNING: ['InAppBrowser'] took '136.489990' ms. Plugin should use a background thread.
+2015-03-08 12:41:25.778 StumbleFeed[12918:12816584] Apache Cordova native platform version 3.8.0 is starting.
+2015-03-08 12:41:25.780 StumbleFeed[12918:12816584] Multi-tasking -> Device: YES, App: YES
+2015-03-08 12:41:25.797 StumbleFeed[12918:12816584] Unlimited access to network resources
+2015-03-08 12:41:25.805 StumbleFeed[12918:12816584] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-08 12:41:26.629 StumbleFeed[12918:12816584] Resetting plugins due to page load.
+2015-03-08 12:41:27.229 StumbleFeed[12918:12816584] Finished load of: file:///Users/jordanschoen/Library/Developer/CoreSimulator/Devices/9699F65D-0D5F-4F2D-BAD9-397D810FE193/data/Containers/Bundle/Application/199CB695-42FC-4590-8A13-0AED682AA4D8/StumbleFeed.app/www/index.html#/app/login
+2015-03-08 12:41:40.007 StumbleFeed[12918:12816584] Setting the WebView's frame to {{0, 0}, {375, 623}}
+2015-03-08 12:41:40.019 StumbleFeed[12918:12816584] THREAD WARNING: ['InAppBrowser'] took '178.622070' ms. Plugin should use a background thread.

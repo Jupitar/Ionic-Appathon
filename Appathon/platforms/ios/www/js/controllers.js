@@ -38,37 +38,32 @@ angular.module('stumblefeed.controllers', [])
 
     })
 
-    .controller('CaptionCtrl', function ($scope, IMAGEURI, Post) {
+    .controller('CaptionCtrl', function ($scope, $location, IMAGEURI, Post) {
+        $scope.postData = {};
+
         $scope.createPost = function() {
-
-            if (!$.isEmptyObject($scope.formData)) {
-                $scope.formData.image = IMAGEURI;
-                Post.post($scope.formData)
-                    .success(function(data) {
-                        $scope.postData = {};
-                        $scope.daily = data;
-                    });
-            }
-        };
-    })
-
-    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI, Post) {
-
-            $scope.postData = {};
-
-            $scope.getPicture = function() {
-                $scope.show();
-                Cam.getPicture().then(function(imageURI) {
-                $scope.postData.image = "data:image/jpeg;base64," + imageURI;
+                $scope.postData.image = IMAGEURI.getData();
                 $scope.postData.date = Date.now();
+                $scope.postData.caption = this.formData;
                 Post.post($scope.postData)
                     .success(function(data) {
-                        $scope.hide();
-                        $scope.postData = {};
-                        $scope.items = data.slice().reverse();
+                        $location.path('/app/person/me/feed');
                     });
+          };
+
+          $scope.cancel = function() {
+                $location.path('/app/person/me/feed');
+          };
+    })
+
+    .controller('FeedCtrl', function ($scope, $stateParams, OpenFB, Post, $ionicLoading, $state, Cam, IMAGEURI) {
+
+            $scope.getPicture = function() {
+                Cam.getPicture().then(function(imageURI) {
+
+                    IMAGEURI.setData("data:image/jpeg;base64," + imageURI);
+                    $state.go('app.caption');
             }, function(err) {
-                $scope.hide();
                 console.error(err);
             });
           };
@@ -83,16 +78,16 @@ angular.module('stumblefeed.controllers', [])
         };
 
         function loadFeed() {
-        $scope.show();
-          Post.get()
-            .success(function(data) {
-                $scope.hide();
-                $scope.items = data.slice().reverse();
-                $scope.$broadcast('scroll.refreshComplete');
-            }).error(function(data) {
-                $scope.hide();
-                console.error(err);
-            });
+              $scope.show();
+              Post.get()
+                .success(function(data) {
+                    $scope.hide();
+                    $scope.items = data.slice().reverse();
+                    $scope.$broadcast('scroll.refreshComplete');
+                }).error(function(data) {
+                    $scope.hide();
+                    console.error(data);
+                });
         }
 
         $scope.doRefresh = loadFeed;
