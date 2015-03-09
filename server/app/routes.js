@@ -26,14 +26,14 @@ module.exports = function(app) {
           console.log("successfully posted");
         });
 
-        var q = Posts.find().limit(20);
+        var q = Posts.find().sort('date', -1).limit(20);
         q.exec(function(err, posts) {
             res.json(posts);
         });
     });
 
     app.get('/upload', function(req, res, next) {
-        var q = Posts.find().limit(20);
+        var q = Posts.find().sort('date', -1).limit(20);
         q.exec(function(err, posts) {
             res.json(posts);
         });

@@ -14,9 +14,9 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
             }
         });
 
-        $rootScope.$on('$stateChangeStart', function(event, toState) {
-            if (toState.name !== "app.login" && toState.name !== "app.logout" && !$window.sessionStorage['fbtoken']) {
-                $state.go('app.login');
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+            if (toState.data.requireLogin && !$window.sessionStorage['fbtoken']) {
+                $state.go('login');
                 event.preventDefault();
             }
         });
@@ -34,16 +34,18 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
                 url: "/app",
                 abstract: true,
                 templateUrl: "templates/menu.html",
-                controller: "AppCtrl"
+                controller: "AppCtrl",
+                data: {
+                    requireLogin: true
+                }
             })
 
-            .state('app.login', {
+            .state('login', {
                 url: "/login",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/login.html",
-                        controller: "LoginCtrl"
-                    }
+                templateUrl: "templates/login.html",
+                controller: "LoginCtrl",
+                data: {
+                    requireLogin: false
                 }
             })
 
@@ -54,6 +56,9 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
                         templateUrl: "templates/logout.html",
                         controller: "LogoutCtrl"
                     }
+                },
+                data: {
+                    requireLogin: false
                 }
             })
 
@@ -68,7 +73,7 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
             })
 
             .state('app.feed', {
-                url: "/person/:personId/feed",
+                url: "/feed",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/feed.html",
@@ -78,7 +83,7 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
             });
 
         // fallback route
-        $urlRouterProvider.otherwise('/app/person/me/feed');
+        $urlRouterProvider.otherwise('/app/feed');
 
     });
 

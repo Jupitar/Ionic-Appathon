@@ -6,15 +6,10 @@ angular.module('stumblefeed.controllers', [])
 
     .controller('AppCtrl', function ($scope, $state, OpenFB) {
 
-        $scope.logout = function () {
-            OpenFB.logout();
-            $state.go('app.login');
-        };
-
         $scope.revokePermissions = function () {
             OpenFB.revokePermissions().then(
                 function () {
-                    $state.go('app.login');
+                    $state.go('login');
                 },
                 function () {
                     alert('Revoke permissions failed');
@@ -29,11 +24,20 @@ angular.module('stumblefeed.controllers', [])
 
             OpenFB.login('email,read_stream,publish_stream').then(
                 function () {
-                    $location.path('/app/person/me/feed');
+                    $location.path('/app/feed');
                 },
                 function () {
                     alert('OpenFB login failed');
                 });
+        };
+
+    })
+
+    .controller('LogoutCtrl', function ($scope, $location, OpenFB) {
+
+        $scope.logout = function () {
+            OpenFB.logout();
+            $state.go('login');
         };
 
     })
@@ -47,12 +51,12 @@ angular.module('stumblefeed.controllers', [])
                 $scope.postData.caption = this.formData;
                 Post.post($scope.postData)
                     .success(function(data) {
-                        $location.path('/app/person/me/feed');
+                        $location.path('/app/feed');
                     });
           };
 
           $scope.cancel = function() {
-                $location.path('/app/person/me/feed');
+                $location.path('/app/feed');
           };
     })
 
@@ -82,7 +86,8 @@ angular.module('stumblefeed.controllers', [])
               Post.get()
                 .success(function(data) {
                     $scope.hide();
-                    $scope.items = data.slice().reverse();
+                    // $scope.items = data.slice().reverse();
+                    // $scope.items = data;
                     $scope.$broadcast('scroll.refreshComplete');
                 }).error(function(data) {
                     $scope.hide();
