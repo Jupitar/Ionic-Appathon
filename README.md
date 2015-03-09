@@ -6,5 +6,5 @@ Web App in iOS and Android wrapper
 
 `$ ionic emulate ios`
 
-## If you have Android intalled
+## If you have Android installed
 `$ ionic run android`
