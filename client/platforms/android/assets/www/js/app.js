@@ -62,13 +62,12 @@ angular.module('stumblefeed', ['ionic', 'openfb', 'stumblefeed.controllers', 'st
                 }
             })
 
-            .state('app.caption',{
+            .state('caption',{
                 url:'/caption',
-                views: {
-                    'menuContent': {
-                        templateUrl:'templates/caption.html',
-                        controller:'CaptionCtrl'
-                    }
+                templateUrl:'templates/caption.html',
+                controller:'CaptionCtrl',
+                data: {
+                    requireLogin: false
                 }
             })
 
