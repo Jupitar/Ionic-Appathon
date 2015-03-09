@@ -87,7 +87,7 @@ angular.module('stumblefeed.controllers', [])
                 .success(function(data) {
                     $scope.hide();
                     // $scope.items = data.slice().reverse();
-                    // $scope.items = data;
+                    $scope.items = data;
                     $scope.$broadcast('scroll.refreshComplete');
                 }).error(function(data) {
                     $scope.hide();
