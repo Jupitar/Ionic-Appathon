@@ -37,7 +37,7 @@ angular.module('stumblefeed.controllers', [])
 
         $scope.logout = function () {
             OpenFB.logout();
-            $state.go('login');
+            $location.path('/login');
         };
 
     })
@@ -66,7 +66,7 @@ angular.module('stumblefeed.controllers', [])
                 Cam.getPicture().then(function(imageURI) {
 
                     IMAGEURI.setData("data:image/jpeg;base64," + imageURI);
-                    $state.go('app.caption');
+                    $state.go('caption');
             }, function(err) {
                 console.error(err);
             });
@@ -86,8 +86,7 @@ angular.module('stumblefeed.controllers', [])
               Post.get()
                 .success(function(data) {
                     $scope.hide();
-                    // $scope.items = data.slice().reverse();
-                    // $scope.items = data;
+                    $scope.items = data;
                     $scope.$broadcast('scroll.refreshComplete');
                 }).error(function(data) {
                     $scope.hide();
